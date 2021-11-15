@@ -1,0 +1,4 @@
+spytat sa na outlierov a ich nahradzovanie krajnymi hodnotami
+	     scaling a tranformerov ze ci pol na pol alebo na vsetko
+	     mutual dava vzdy ine vysledky
+	     zoradenie features
