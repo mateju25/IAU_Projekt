@@ -1,4 +1,6 @@
-spytat sa na outlierov a ich nahradzovanie krajnymi hodnotami
-	     scaling a tranformerov ze ci pol na pol alebo na vsetko
-	     mutual dava vzdy ine vysledky
-	     zoradenie features
+spytat sa na zadanie 2 co bolo zle
+	     zadanie 3 mozme pracovat s datasetom merged? potom rozdelit na train test?
+	     je accuracy 0.68 dostatocne na 1R ?
+	     treba vyzualizovat aj strom tu, ci staci pdf a ked je velky tak co
+	     mame training accuracy 1 moze byt? 
+
