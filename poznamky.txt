@@ -1,6 +1,6 @@
-spytat sa na zadanie 2 sme mali dokumentaciu len sa nejak odstranila je v html
-	     zadanie 3 mozme pracovat s datasetom merged? potom rozdelit na train test?
+spytat sa na zadanie 3 mozme pracovat s datasetom merged? potom rozdelit na train test?
 	     je accuracy 0.68 dostatocne na 1R ?
 	     treba vyzualizovat aj strom tu, ci staci pdf a ked je velky tak co
 	     mame training accuracy 1 moze byt? 
+	     robime posledny bod dobre?
 

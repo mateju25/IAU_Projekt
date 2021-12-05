@@ -93,7 +93,7 @@ class CustomMinMaxTransformer(TransformerMixin):
             scaler = MinMaxScaler()
             X[numerical_cols] = scaler.fit_transform(X[numerical_cols])
         elif (self.strategy == "transformer"):
-            transformer = PowerTransformer(method='yeo-johnson')
+            transformer = PowerTransformer(method='box-cox')
             X[numerical_cols] = transformer.fit_transform(X[numerical_cols])
         return X
 
