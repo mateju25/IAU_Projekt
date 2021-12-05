@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.base import TransformerMixin
 from sklearn.feature_selection import f_classif, SelectKBest, chi2
 from sklearn.impute import KNNImputer
-from sklearn.preprocessing import OrdinalEncoder, MinMaxScaler, PowerTransformer
+from sklearn.preprocessing import OrdinalEncoder, MinMaxScaler, PowerTransformer, QuantileTransformer
 
 
 def load_datasets(filename1, filename2):
@@ -93,7 +93,7 @@ class CustomMinMaxTransformer(TransformerMixin):
             scaler = MinMaxScaler()
             X[numerical_cols] = scaler.fit_transform(X[numerical_cols])
         elif (self.strategy == "transformer"):
-            transformer = PowerTransformer(method='box-cox')
+            transformer =  PowerTransformer(method='yeo-johnson')
             X[numerical_cols] = transformer.fit_transform(X[numerical_cols])
         return X
 
@@ -118,25 +118,18 @@ class CustomNullValuesTransformer(TransformerMixin):
 
 
 class CustomAtributeSelectiomTransformer(TransformerMixin):
-    def __init__(self, column_names=[], strategy="anova", k=1):
+    def __init__(self, column_names=[], k=1):
         self.column_names = column_names
-        self.strategy = strategy
         self.k = k
 
     def fit(self, X, y=None):
         return self
 
     def transform(self, x, y):
-        if self.strategy == "anova":
-            fs = SelectKBest(score_func=f_classif, k=self.k)
-            fs.fit(x, y)
-            cols = fs.get_support(indices=True)
-            x = x.iloc[:, cols]
-        elif self.strategy == "mutual":
-            fs = SelectKBest(chi2, k=self.k)
-            fs.fit(x, y)
-            cols = fs.get_support(indices=True)
-            x = x.iloc[:, cols]
+        fs = SelectKBest(score_func=f_classif, k=self.k)
+        fs.fit(x, y)
+        cols = fs.get_support(indices=True)
+        x = x.iloc[:, cols]
 
         return x, y
 
