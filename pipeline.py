@@ -117,19 +117,22 @@ class CustomNullValuesTransformer(TransformerMixin):
         return X
 
 
-class CustomAtributeSelectiomTransformer(TransformerMixin):
+class CustomAtributeSelectionTransformer(TransformerMixin):
     def __init__(self, column_names=[], k=1):
         self.column_names = column_names
         self.k = k
+        self.cols = []
 
     def fit(self, X, y=None):
         return self
 
     def transform(self, x, y):
-        fs = SelectKBest(score_func=f_classif, k=self.k)
-        fs.fit(x, y)
-        cols = fs.get_support(indices=True)
-        x = x.iloc[:, cols]
+        if (len(self.cols) == 0):
+            fs = SelectKBest(score_func=f_classif, k=self.k)
+            fs.fit(x, y)
+            self.cols = fs.get_support(indices=True)
+
+        x = x.iloc[:, self.cols]
 
         return x, y
 
