@@ -1,6 +1,0 @@
-Parametre predspracovania:  Outliers:  drop  Scaling/Transforming:  scaler  Null values stratégia:  drop  Počet features:  2
-Algoritmus:  randomForest
-Hyperparametre: {'n_estimators': 160, 'min_samples_split': 4, 'min_samples_leaf': 4, 'max_features': 'log2', 'max_depth': 86, 'bootstrap': True}
-Accuracy na trenovacej množine: 0.8491634172279333
-Accuracy na testovacej množine: 0.8604651162790697
-
